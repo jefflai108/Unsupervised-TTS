@@ -17,15 +17,15 @@ else
     opts="--audio_format flac "
 fi
 
-train_set=alex_train
-valid_set=alex_valid
-test_sets="alex_valid alex_test"
+train_set=w2vU2.0_v1_train
+valid_set=w2vU2.0_v1_valid
+test_sets="w2vU2.0_v1_valid w2vU2.0_v1_test"
 
 train_config=conf/tuning/sls_train_tacotron2.yaml
 inference_config=conf/tuning/decode_tacotron2.yaml
 
 # modification based on: https://github.com/espnet/espnet/issues/4109
-./tts.sh \
+./tts-w2vU2.0_v1.sh \
     --lang en \
     --feats_type raw \
     --fs "${fs}" \
@@ -40,5 +40,7 @@ inference_config=conf/tuning/decode_tacotron2.yaml
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
     --srctexts "data/${train_set}/text" \
-    --ngpu 2 --stage 5 --stop-stage 5 \
+    --ngpu 2 --stage 6 --stop-stage 6 \
+    --tag sls_train_tacotron2_raw_phn_none-w2vU2.0_v1 \
+    --tts_stats_dir exp/tts_stats_raw_phn_none-w2vU2.0_v1 \
     ${opts} "$@"
