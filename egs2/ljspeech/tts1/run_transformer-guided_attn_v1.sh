@@ -17,14 +17,14 @@ else
     opts="--audio_format flac "
 fi
 
-train_set=w2vU2.0_v1_train
-valid_set=w2vU2.0_v1_valid
-test_sets="w2vU2.0_v1_valid w2vU2.0_v1_test"
+train_set=alex_train
+valid_set=alex_valid
+test_sets="alex_valid alex_test"
 
-train_config=conf/tuning/sls_train_transformer.yaml
+train_config=conf/tuning/sls_train_transformer-guided_attn_v1.yaml
 inference_config=conf/tuning/decode_transformer.yaml
 
-./tts-w2vU2.0_v1.sh \
+./tts.sh \
     --lang en \
     --feats_type raw \
     --fs "${fs}" \
@@ -40,8 +40,6 @@ inference_config=conf/tuning/decode_transformer.yaml
     --test_sets "${test_sets}" \
     --srctexts "data/${train_set}/text" \
     --ngpu 2 --stage 6 --stop-stage 6 \
-    --tag sls_train_transformer_raw_phn_none-w2vU2.0_v1 \
-    --tts_stats_dir exp/tts_stats_raw_phn_none-w2vU2.0_v1 \
     --inference_model valid.loss.best.pth \
     ${opts} "$@"
 

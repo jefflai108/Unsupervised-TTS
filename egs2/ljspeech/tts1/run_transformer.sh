@@ -39,12 +39,14 @@ inference_config=conf/tuning/decode_transformer.yaml
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
     --srctexts "data/${train_set}/text" \
-    --ngpu 2 --stage 7 --stop-stage 7 \
-    --inference_model valid.loss.ave.pth \
-    --inference_tag decode_transformer_valid.loss.ave_parallel_wavegan.v3 \
-    --vocoder_file /data/sls/temp/clai24/pretrained-models/vocoders/train_nodev_ljspeech_parallel_wavegan.v3/checkpoint-3000000steps.pkl \
+    --ngpu 2 --stage 6 --stop-stage 6 \
+    --inference_model valid.loss.best.pth \
     ${opts} "$@"
 
-    # decode with parallel-wavegan
+    #--inference_model valid.loss.ave.pth \
     #--inference_tag decode_transformer_valid.loss.ave_parallel_wavegan.v3 \
+    #--vocoder_file /data/sls/temp/clai24/pretrained-models/vocoders/train_nodev_ljspeech_parallel_wavegan.v3/checkpoint-3000000steps.pkl \
+
+    #--inference_model valid.loss.best.pth \
+    #--inference_tag decode_transformer_valid.loss.best_parallel_wavegan.v3 \
     #--vocoder_file /data/sls/temp/clai24/pretrained-models/vocoders/train_nodev_ljspeech_parallel_wavegan.v3/checkpoint-3000000steps.pkl \

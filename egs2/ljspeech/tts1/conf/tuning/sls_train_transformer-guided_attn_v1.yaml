@@ -47,8 +47,8 @@ tts_conf:                  # keyword arguments for the selected model
     transformer_dec_attn_dropout_rate: 0.1           # dropout rate for transformer decoder attention layer
     transformer_enc_dec_attn_dropout_rate: 0.1       # dropout rate for transformer encoder-decoder attention layer
     use_guided_attn_loss: true                       # whether to use guided attention loss
-    num_heads_applied_guided_attn: 2                 # number of layers to apply guided attention loss
-    num_layers_applied_guided_attn: 2                # number of heads to apply guided attention loss
+    num_heads_applied_guided_attn: 8                 # number of layers to apply guided attention loss
+    num_layers_applied_guided_attn: 6                # number of heads to apply guided attention loss
     modules_applied_guided_attn: ["encoder-decoder"] # modules to apply guided attention loss
     guided_attn_loss_sigma: 0.4                      # sigma in guided attention loss
     guided_attn_loss_lambda: 10.0                    # lambda in guided attention loss
