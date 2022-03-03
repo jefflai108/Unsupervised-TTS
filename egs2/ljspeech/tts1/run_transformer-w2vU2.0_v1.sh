@@ -19,11 +19,12 @@ fi
 
 train_set=w2vU2.0_v1_train
 valid_set=w2vU2.0_v1_valid
-test_sets="w2vU2.0_v1_valid w2vU2.0_v1_test"
+test_sets="alex_valid_nopunc alex_test_nopunc" # use ground-truth text for decoding 
 
 train_config=conf/tuning/sls_train_transformer.yaml
 inference_config=conf/tuning/decode_transformer.yaml
 
+for inference_model in valid.loss.best valid.loss.ave; do 
 ./tts-w2vU2.0_v1.sh \
     --lang en \
     --feats_type raw \
@@ -39,11 +40,14 @@ inference_config=conf/tuning/decode_transformer.yaml
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
     --srctexts "data/${train_set}/text" \
-    --ngpu 2 --stage 6 --stop-stage 6 \
+    --ngpu 2 --stage 7 --stop-stage 7 \
     --tag sls_train_transformer_raw_phn_none-w2vU2.0_v1 \
     --tts_stats_dir exp/tts_stats_raw_phn_none-w2vU2.0_v1 \
-    --inference_model valid.loss.best.pth \
+    --inference_model ${inference_model}.pth \
+    --inference_tag decode_transformer_${inference_model}_parallel_wavegan.v3 \
+    --vocoder_file /data/sls/temp/clai24/pretrained-models/vocoders/train_nodev_ljspeech_parallel_wavegan.v3/checkpoint-3000000steps.pkl \
     ${opts} "$@"
+done 
 
     #--inference_model valid.loss.ave.pth \
     #--inference_tag decode_transformer_valid.loss.ave_parallel_wavegan.v3 \

@@ -22,7 +22,7 @@ valid_set=w2vU2.0_v1_valid
 test_sets="w2vU2.0_v1_valid w2vU2.0_v1_test"
 test_sets="alex_valid_nopunc alex_test_nopunc" # use ground-truth text for decoding 
 
-train_config=conf/tuning/sls_train_transformer-guided_attn_v1.yaml
+train_config=conf/tuning/sls_train_transformer-guided_attn_v2.0.yaml
 inference_config=conf/tuning/decode_transformer.yaml
 
 ./tts-w2vU2.0_v1.sh \
@@ -40,8 +40,8 @@ inference_config=conf/tuning/decode_transformer.yaml
     --valid_set "${valid_set}" \
     --test_sets "${test_sets}" \
     --srctexts "data/${train_set}/text" \
-    --ngpu 2 --stage 6 --stop-stage 6 \
-    --tag sls_train_transformer-guided_attn_v1_raw_phn_none-w2vU2.0_v1 \
+    --ngpu 2 --stage 6 --stop-stage 7 \
+    --tag sls_train_transformer-guided_attn_v2.0_raw_phn_none-w2vU2.0_v1 \
     --tts_stats_dir exp/tts_stats_raw_phn_none-w2vU2.0_v1 \
     --inference_model valid.loss.best.pth \
     ${opts} "$@"
