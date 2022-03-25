@@ -2,6 +2,19 @@
 
 This is the recipe of English single female speaker TTS model with [LJSpeech](https://keithito.com/LJ-Speech-Dataset/) corpus.
 
+To run unsupervised TTS: 
+```sh
+$ ./run_transformer-w2vU2.0_v1-guided_attn_v1.sh
+```
+
+To run supervised TTS: 
+```sh
+$ ./run_transformer_nopunc-guided_attn_v1.sh
+```
+
+
+
+
 See the following pages for the usage:
 - [How to run the recipe](../../TEMPLATE/tts1/README.md#how-to-run)
 - [How to train FastSpeech](../../TEMPLATE/tts1/README.md#fastspeech-training)

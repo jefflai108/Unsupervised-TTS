@@ -1,5 +1,26 @@
 # LIBRITTS RECIPE
 
+To run unsupervised multi-speaker TTS: 
+```sh
+$ ./run_gst+xvector_transformer_w2vU2.0_v1.sh
+```
+
+To run supervised multi-speaker TTS: 
+```sh
+$ ./run_gst+xvector_transformer_nopunc.sh
+```
+
+To run unsupervised multi-speaker TTS w/ target speaker finetuning: 
+```sh
+$ ./run_gst+xvector_transformer_w2vU2.0_v1-spkfinetune.sh $SPKID
+```
+
+To run supervised multi-speaker TTS w/ target speaker finetuning: 
+```sh
+$ ./run_gst+xvector_transformer_nopunc-spkfinetune.sh
+```
+
+
 This is the recipe of the English multi-speaker TTS model with [LibriTTS](http://www.openslr.org/60) corpus.
 
 See the following pages for the usage:
