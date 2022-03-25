@@ -18,18 +18,16 @@ else
     opts="--audio_format flac "
 fi
 
-train_set=train-clean-460
-valid_set=dev-clean
-test_sets="dev-clean test-clean"
+train_set=alex_train-clean-460_nopunc
+valid_set=alex_dev-clean_nopunc
+test_sets="alex_dev-clean_nopunc alex_test-clean_nopunc"
 
-train_config=conf/train.yaml
+train_config=conf/tuning/sls_train_gst+xvector_tacotron2.yaml
 inference_config=conf/decode.yaml
 
-cleaner=tacotron
-g2p=g2p_en_no_space # or g2p_en
 local_data_opts="--trim_all_silence true" # trim all silence in the audio
 
-./tts.sh \
+./tts-nopunc.sh \
     --ngpu 4 \
     --lang en \
     --feats_type raw \
@@ -39,8 +37,8 @@ local_data_opts="--trim_all_silence true" # trim all silence in the audio
     --n_shift "${n_shift}" \
     --win_length "${win_length}" \
     --token_type phn \
-    --cleaner "${cleaner}" \
-    --g2p "${g2p}" \
+    --cleaner none \
+    --g2p none \
     --train_config "${train_config}" \
     --inference_config "${inference_config}" \
     --train_set "${train_set}" \
@@ -51,4 +49,7 @@ local_data_opts="--trim_all_silence true" # trim all silence in the audio
     --xvector_tool speechbrain \
     --use_sid false \
     --use_lid false \
+    --stage 6 --stop-stage 6 \
+    --tag sls_train_gst+xvector_tacotron2_raw_phn_none-nopunc \
+    --tts_stats_dir exp/tts_stats_raw_phn_none-nopunc \
     ${opts} "$@"

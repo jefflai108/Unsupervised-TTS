@@ -1,0 +1,8 @@
+espnet: 0.8.0
+files:
+  model_file: exp/tts_train_xvector_transformer_raw_phn_tacotron_g2p_en_no_space/train.loss.ave_5best.pth
+python: "3.7.3 (default, Mar 27 2019, 22:11:17) \n[GCC 7.3.0]"
+timestamp: 1609589120.483584
+torch: 1.5.1
+yaml_files:
+  train_config: exp/tts_train_xvector_transformer_raw_phn_tacotron_g2p_en_no_space/config.yaml

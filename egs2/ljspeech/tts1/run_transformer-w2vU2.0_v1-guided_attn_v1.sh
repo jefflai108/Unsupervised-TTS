@@ -21,6 +21,7 @@ train_set=w2vU2.0_v1_train
 valid_set=w2vU2.0_v1_valid
 test_sets="w2vU2.0_v1_valid w2vU2.0_v1_test"
 test_sets="alex_valid_nopunc alex_test_nopunc" # use ground-truth text for decoding 
+test_sets=w2vU2.0_v1_test
 
 train_config=conf/tuning/sls_train_transformer-guided_attn_v1.yaml
 inference_config=conf/tuning/decode_transformer.yaml
